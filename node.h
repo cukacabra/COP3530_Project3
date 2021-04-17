@@ -1,17 +1,19 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "record.h"
 using namespace std;
 
 struct node
 {
-private:
+public:
 	node* leftChild = nullptr;
 	node* rightChild = nullptr;
-	record data;
 
-public:
-	node(record);
+    string nodeAirport = "";
+    vector<record> data;
 
+    node();
+    node(record);
 	// create parent, etc
 };

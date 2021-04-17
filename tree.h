@@ -11,6 +11,6 @@ private:
 
 public:
 	//tree();
-	bool checkNode(string airport);
-	// create parent, etc
+	node* getNode(node* rootNode, string airport);
+	bool insertNode(node* rootNode, node* inserted);
 };
