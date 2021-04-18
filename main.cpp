@@ -18,7 +18,6 @@ string userSelection;
 
 void openUserFile(string userPick)
 {
-	cout << "error";
 	ifstream inFile(userPick); // fileStream Object
 	if (inFile.is_open())
 	{
