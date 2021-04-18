@@ -16,19 +16,19 @@ node::node()
     node* rightChild = nullptr;
 
     string nodeAirport = "";
-    vector<record> data;
+    vector<record> dataVector;
 }
 
 node::node(record record_)
 {
-	this->data.push_back(record_);
+	this->dataVector.push_back(record_);
 }
 
 
 
 node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply run me on a node and it will generate dataProcessed, a unordered map of key:airline name value:pair<number of flights, reliability score (out of 100)>
     //first = flight count for this given airline; second = cumlative tardy score
-    for (auto it = data.begin(); it != data.end(); ++it) {
+    for (auto it = dataProcessed.begin(); it != dataProcessed.end(); ++it) {
         it.generateRecordScore();
         dataProcessed[it->airline]->second->first += 1;
         dataProcessed[it->airline]->second->second += it->tardyscore;
