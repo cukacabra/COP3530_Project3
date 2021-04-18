@@ -13,11 +13,12 @@ using namespace std;
 // each record needs a node
 // need to organize into binary tree
 
-queue<node> nodes;
+queue<node> nodes; //needs to be made into a binary tree of members node.
 string userSelection;
 
 void openUserFile(string userPick)
 {
+	cout << "error";
 	ifstream inFile(userPick); // fileStream Object
 	if (inFile.is_open())
 	{
@@ -34,6 +35,8 @@ void openUserFile(string userPick)
 		}
 	}
 	inFile.close();}
+
+
 
 // create and populate table based on root OR could be lowest item in PQ
 void populateTable()

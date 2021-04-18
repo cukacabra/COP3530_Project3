@@ -13,12 +13,12 @@ int score;
 */
 class record
 {
+
 private:
 	int year;
 	int month;
 	int day;
 	string day_of_week;
-	string airline;
 	int flight_number;
 	string tail_number;
 	string origin_airport;
@@ -45,9 +45,12 @@ private:
 	int airline_delay;
 	int late_aircraft_delay;
 	int weather_delay;
-
+	
 
 public:
 	record();
 	record(string lineitem_);
+	void generateRecordScore(); 
+	string airline;
+	float tardyScore; //in this context, bigger score means LESS reliable
 };

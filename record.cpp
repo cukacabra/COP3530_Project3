@@ -52,12 +52,15 @@ record::record(string lineItem_)
 	arrival_delay = stoi(lineItemVector[22]);
 	diverted = stoi(lineItemVector[23]);
 	cancelled = stoi(lineItemVector[24]);
+	// what is all this stuff below here? VVV, not represented in flights20
 	cancellation_reason = lineItemVector[25];
 	air_system_delay = 0;
 	security_delay = stoi(lineItemVector[27]);
 	airline_delay = stoi(lineItemVector[28]);
 	late_aircraft_delay = stoi(lineItemVector[29]);
 	weather_delay = stoi(lineItemVector[30]);
+
+	tardyScore = 0;
 
 
 		/*year = stoi(lineItemVector.front());
@@ -198,6 +201,32 @@ record::record()
 	month = 0;
 	day = 0;
 	day_of_week = "NA";
+	tardyScore = 0;
 }
 // other record relate methods
 // getThis, getThat, etc.
+
+
+void record::generateRecordScore() {
+	if (cancelled != 0) { //if cancelled, 100 score! Very very bad!
+		tardyScore = 100;
+		return;
+	}
+	if (diverted != 0) { //if diverted, 80 score! You might get your destination, but much slower!
+		tardyScore = 80;
+		return;
+	}
+	if (airline_delay > 50) { //airline delay is 50, before it is considered to be at its maximum
+		tardyScore += 40;
+	}
+	else if (airline_delay > 0) {
+		tardyScore += 0.8 * arrival_delay;
+	}
+	if (taxi_in + taxi_out > 50) { //total taxi time is 50, before it is considered to be at its maximum; nobody likes taxi-ing
+		tardyScore += 20;
+	}
+	else if (taxi_in + taxi_out > 0) {
+		tardyScore += 0.4 * arrival_delay;
+	}
+	return;
+}
