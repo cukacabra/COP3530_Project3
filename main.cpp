@@ -9,6 +9,7 @@
 #include "tree.h"
 #include "scorecard.h"
 #include <sstream>
+#include <iterator>
 using namespace std;
 
 // currently a vector of records
@@ -32,14 +33,28 @@ void openUserFile(string userPick)
 		{
 			//cout << "new line input: " << line << endl; // print ever line to test
 			//node* newNode = node(line);
-			node* newNode = new node(line);
-			nodes.push_back(newNode);
+			//
+			record newRecord = record(line);
+			bool temp = true;
+			// check vector of nodes
+			//std::vector<node>::iterator it; 
+			for (int i = 0; i < nodes.size(); i++)
+			{
+				if (nodes[i]->nodeAirport == newRecord.origin_airport)
+				{
+					nodes[i]->data.push_back(newRecord);
+					temp = false;
+					break;
+				}
+			}
+			if (temp) {
+				node* newNode = new node(newRecord);
+				nodes.push_back(newNode);
+			}
 		}
 	}
 	inFile.close();
 }
-
-
 
 
 
@@ -56,7 +71,7 @@ int main()
 
 	if (option == 1)
 	{
-		openUserFile("20flights.csv");
+		openUserFile("C:\\Users\\mcdc9\\Desktop\\COP3530_Project3-main\\20flights.csv");
 		myTree.populateTree(nodes);
 		//change name
 	}
@@ -89,11 +104,12 @@ int main()
 		string airportCode;
 		cin >> airportCode;
 		node* myNode = myTree.getNode(myTree.root, airportCode);
+		myNode->processRecords();
 		cout << "Please see the output for your results. Have a safe flight!" << endl;
 		// do node csv things
 		ofstream myfile;
-		myfile.open("scores.csv");
-		myNode.writeNode(myfile);
+		myfile.open("scores2.csv");
+		myNode->writeNode(myfile);
 		myfile.close();
 	}
 

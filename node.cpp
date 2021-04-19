@@ -22,7 +22,9 @@ node::node()
 node::node(record record_)
 {
 	this->data.push_back(record_);
+    this->nodeAirport = record_.origin_airport;
 }
+
 
 
 
@@ -60,10 +62,11 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
 
     //selection sorting time!
     for (int i = 0; i < dataVector.size() - 1; i++) {
-        int max = i;
+        //float max = dataVector[i].score;
+        int maxLoc = i;
         for (int j = i + 1; j < dataVector.size(); j++) {
-            if (dataVector[j].score > dataVector[max].score) {
-                max = dataVector[j].score;
+            if (dataVector[j].score > dataVector[maxLoc].score) {
+                maxLoc = j;
             }
         }
         //should only need to happen once, so I won't go about making a function for it
@@ -71,16 +74,15 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
         //int tempFreq = dataVector[i]->flightNumber;
         //float tempScore = dataVector[i]->score;
         scorecard temp = dataVector[i];
-        dataVector[i] = dataVector[max];
-        dataVector[max] = temp;
+        dataVector[i] = dataVector[maxLoc];
+        dataVector[maxLoc] = temp;
     }
 }
 
 // writes airline name and score into csv
 void node::writeNode(ofstream& infile) {  
 	// iterates through dataVector
-	infile << "Airline,Score" << "\n";
 	for (auto it = dataVector.begin(); it != dataVector.end(); ++it) {
-		infile << it->airline << "," << it->score << "\n";
+		infile << it->airline << "," << it->score << ", " << it->flightNumber << "\n";
 	}
 }

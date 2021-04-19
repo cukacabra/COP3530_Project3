@@ -26,17 +26,29 @@ node* tree::getNode(node* rootNode, string airport)
 bool tree::insertNode(node* rootNode, node* inserted)
 {
     if(rootNode == nullptr){ //Airport inserted
-        rootNode = inserted;
+        //rootNode = inserted;
+        this->root = inserted;
         return true;
     }
     else if(inserted->nodeAirport == rootNode->nodeAirport){ // Airport in tree
         return false;
-    } else if(inserted->nodeAirport < rootNode->nodeAirport){
+    } else if(inserted->nodeAirport < rootNode->nodeAirport && rootNode->leftChild == NULL){
+        rootNode->leftChild = inserted;
+        return true;
+    } else if (inserted->nodeAirport < rootNode->nodeAirport) {
         return insertNode(rootNode->leftChild, inserted);
-    } else{
+    } 
+    else if (inserted->nodeAirport > rootNode->nodeAirport && rootNode->rightChild == NULL) {
+        rootNode->rightChild = inserted;
+        return true;
+    }
+    else if (inserted->nodeAirport > rootNode->nodeAirport) {
         return insertNode(rootNode->rightChild, inserted);
     }
 }
+
+
+
 
 // create and populate table based on root OR could be lowest item in PQ
 void tree::populateTree(vector<node*> nodes)

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 #include <sstream>
 using namespace std;
 
@@ -220,13 +221,13 @@ void record::generateRecordScore() {
 		tardyScore += 40;
 	}
 	else if (airline_delay > 0) {
-		tardyScore += 0.8 * arrival_delay;
+		tardyScore += 0.8 * abs(arrival_delay);
 	}
 	if (taxi_in + taxi_out > 50) { //total taxi time is 50, before it is considered to be at its maximum; nobody likes taxi-ing
 		tardyScore += 20;
 	}
 	else if (taxi_in + taxi_out > 0) {
-		tardyScore += 0.4 * arrival_delay;
+		tardyScore += 0.4 * abs(arrival_delay);
 	}
 	return;
 }

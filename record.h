@@ -13,8 +13,7 @@ int score;
 */
 class record
 {
-
-private:
+public:
 	int year;
 	int month;
 	int day;
@@ -46,8 +45,6 @@ private:
 	int late_aircraft_delay;
 	int weather_delay;
 	
-
-public:
 	record();
 	record(string lineitem_);
 	void generateRecordScore(); 
