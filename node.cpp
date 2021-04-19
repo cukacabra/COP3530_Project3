@@ -30,7 +30,7 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
     //first = flight count for this given airline; second = cumlative tardy score
     for (auto it = data.begin(); it != data.end(); ++it) {
         it->generateRecordScore();
-        dataProcessed[it->airline].second += 1;
+        dataProcessed[it->airline].first += 1;
         dataProcessed[it->airline].second += it->tardyScore;
     }
     //right now map is map<airline pair<number of flights, tardyScore>
