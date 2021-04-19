@@ -21,7 +21,6 @@ string userSelection;
 
 void openUserFile(string userPick)
 {
-	cout << "hello";
 	ifstream inFile(userPick); // fileStream Object
 	if (inFile.is_open())
 	{
@@ -109,6 +108,8 @@ int main()
 		myfile.open("./output/scores2.csv");
 		myNode->writeNode(myfile);
 		myfile.close();
+		system("Rscript plot-scores.r -s output/scores2.csv -o output/");
+
 	}
 
 	else

@@ -43,7 +43,6 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
         entry->airline = it->first; // POSSIBLE ERROR LOCATION! NEED TO ACCESS NAME!
         entry->flightNumber = it->second.first; //hope this works
         entry->score = it->second.second;
-
         dataVector.push_back(*entry);
     }
 
