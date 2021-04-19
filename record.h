@@ -52,6 +52,5 @@ public:
 	record(string lineitem_);
 	void generateRecordScore(); 
 	string airline;
-	int score;
 	float tardyScore; //in this context, bigger score means LESS reliable
 };
