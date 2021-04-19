@@ -108,7 +108,7 @@ int main()
 		myfile.open("./output/scores2.csv");
 		myNode->writeNode(myfile);
 		myfile.close();
-		system("Rscript plot-scores.r -s output/scores2.csv -o output/");
+		system("C:\Program Files\R\R-4.0.5\bin\Rscript.exe src/plot-scores.r -s output/scores2.csv -o output/");
 
 	}
 
