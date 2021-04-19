@@ -19,7 +19,6 @@ private:
 	int month;
 	int day;
 	string day_of_week;
-	string airline;
 	int flight_number;
 	string tail_number;
 	string origin_airport;
