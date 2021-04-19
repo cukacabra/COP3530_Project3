@@ -37,3 +37,15 @@ bool tree::insertNode(node* rootNode, node* inserted)
         return insertNode(rootNode->rightChild, inserted);
     }
 }
+
+// create and populate table based on root OR could be lowest item in PQ
+void tree::populateTree(vector<node*> nodes)
+{
+    //check access of myTree
+    //myTree tree;
+    //tree.root = nullptr;
+    for (auto thisNode : nodes)
+    {
+        this->insertNode(this->root,thisNode);
+    }
+};

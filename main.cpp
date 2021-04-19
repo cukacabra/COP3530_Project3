@@ -7,6 +7,7 @@
 #include "record.h"
 #include "node.h"
 #include "tree.h"
+#include "scorecard.h"
 #include <sstream>
 using namespace std;
 
@@ -14,7 +15,7 @@ using namespace std;
 // each record needs a node
 // need to organize into binary tree
 
-vector<node> nodes; //needs to be made into a binary tree of members node.
+vector<node*> nodes; //needs to be made into a binary tree of members node.
 string userSelection;
 
 void openUserFile(string userPick)
@@ -30,7 +31,8 @@ void openUserFile(string userPick)
 		while (getline(inFile, line))
 		{
 			//cout << "new line input: " << line << endl; // print ever line to test
-			node newNode = node(line);
+			//node* newNode = node(line);
+			node* newNode = new node(line);
 			nodes.push_back(newNode);
 		}
 	}
@@ -39,20 +41,12 @@ void openUserFile(string userPick)
 
 
 
-// create and populate table based on root OR could be lowest item in PQ
-void populateTable()
-{
-	//check access of myTree
-	tree* myTree = new tree;
-	for (auto& thisNode : nodes)
-	{
-		myTree.insertNode(thisNode);
-	}
-};
+
 
 
 int main()
 {
+	tree myTree;
 	cout << "Which file(s) to open?\n";
 	//cout << "Would you like to read in data now? 1 for Yes" << endl;
 
@@ -63,7 +57,7 @@ int main()
 	if (option == 1)
 	{
 		openUserFile("20flights.csv");
-		populateTable();
+		myTree.populateTree(nodes);
 		//change name
 	}
 
@@ -94,7 +88,7 @@ int main()
 		cout << "Input a 3 character airport code such as PHL, LAX, or SEA:" << endl;
 		string airportCode;
 		cin >> airportCode;
-		node* myNode = tree.getNode(airportCode);
+		node* myNode = myTree.getNode(myTree.root, airportCode);
 		cout << "Please see the output for your results. Have a safe flight!" << endl;
 		// do node csv things
 		ofstream myfile;
