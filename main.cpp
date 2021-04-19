@@ -67,7 +67,7 @@ int main()
 
 
 	/*======= Prompt user with choices, get input =======*/
-	cout << "1. Do thing" << endl;
+	cout << "1. Learn more about an airport." << endl;
 	cout << "2. Do other thing" << endl;
 	cout << "3. Do anothing thing" << endl;
 	cout << "4. Do something" << endl;
@@ -80,7 +80,11 @@ int main()
 	/*======= Based on the choice, execute the task and show the results =======*/
 	if (choice == 1)
 	{
-		// do thing
+		cout << "Input a 3 character airport code such as PHL, LAX, or SEA:" << endl;
+		string airportCode;
+		cin >> airportCode;
+		node* myNode = tree.getNode(airportCode);
+		// do node csv things
 	}
 
 	else if (choice == 2)
