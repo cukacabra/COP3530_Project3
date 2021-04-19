@@ -16,39 +16,6 @@ using namespace std;
 vector<node> nodes; //needs to be made into a binary tree of members node.
 string userSelection;
 
-void openUserFile(string userPick)
-{
-	ifstream inFile(userPick); // fileStream Object
-	if (inFile.is_open())
-	{
-		cout << "Opened csv: " << endl;
-		//read line from file to string line
-		string line;
-		getline(inFile, line);
-
-		while (getline(inFile, line))
-		{
-			//cout << "new line input: " << line << endl; // print ever line to test
-			node newNode = node(line);
-			nodes.push(newNode);
-		}
-	}
-	inFile.close();
-}
-
-
-
-// create and populate table based on root OR could be lowest item in PQ
-void populateTable()
-{
-	//check access of myTree
-	tree myTree = new tree;
-	for (auto& thisNode : nodes)
-	{
-		myTree.insertNode(thisNode);
-	}
-};
-
 int main()
 {
 	cout << "Which file(s) to open?\n";
@@ -95,6 +62,10 @@ int main()
 		node* myNode = tree.getNode(airportCode);
 		cout << "Please see the output for your results. Have a safe flight!" << endl;
 		// do node csv things
+		ofstream myfile;
+		myfile.open("scores.csv");
+		myNode.writeNode(myfile);
+		myfile.close();
 	}
 
 	else if (choice == 2)
@@ -125,3 +96,36 @@ int main()
 	}
 	return 0;
 }
+
+void openUserFile(string userPick)
+{
+	ifstream inFile(userPick); // fileStream Object
+	if (inFile.is_open())
+	{
+		cout << "Opened csv: " << endl;
+		//read line from file to string line
+		string line;
+		getline(inFile, line);
+
+		while (getline(inFile, line))
+		{
+			//cout << "new line input: " << line << endl; // print ever line to test
+			node newNode = node(line);
+			nodes.push(newNode);
+		}
+	}
+	inFile.close();
+}
+
+
+
+// create and populate table based on root OR could be lowest item in PQ
+void populateTable()
+{
+	//check access of myTree
+	tree myTree = new tree;
+	for (auto& thisNode : nodes)
+	{
+		myTree.insertNode(thisNode);
+	}
+};
