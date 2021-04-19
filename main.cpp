@@ -6,6 +6,7 @@
 #include <queue>
 #include "record.h"
 #include "node.h"
+#include "tree.h"
 #include <sstream>
 using namespace std;
 
@@ -15,6 +16,40 @@ using namespace std;
 
 vector<node> nodes; //needs to be made into a binary tree of members node.
 string userSelection;
+
+void openUserFile(string userPick)
+{
+	ifstream inFile(userPick); // fileStream Object
+	if (inFile.is_open())
+	{
+		cout << "Opened csv: " << endl;
+		//read line from file to string line
+		string line;
+		getline(inFile, line);
+
+		while (getline(inFile, line))
+		{
+			//cout << "new line input: " << line << endl; // print ever line to test
+			node newNode = node(line);
+			nodes.push_back(newNode);
+		}
+	}
+	inFile.close();
+}
+
+
+
+// create and populate table based on root OR could be lowest item in PQ
+void populateTable()
+{
+	//check access of myTree
+	tree* myTree = new tree;
+	for (auto& thisNode : nodes)
+	{
+		myTree.insertNode(thisNode);
+	}
+};
+
 
 int main()
 {
@@ -97,35 +132,3 @@ int main()
 	return 0;
 }
 
-void openUserFile(string userPick)
-{
-	ifstream inFile(userPick); // fileStream Object
-	if (inFile.is_open())
-	{
-		cout << "Opened csv: " << endl;
-		//read line from file to string line
-		string line;
-		getline(inFile, line);
-
-		while (getline(inFile, line))
-		{
-			//cout << "new line input: " << line << endl; // print ever line to test
-			node newNode = node(line);
-			nodes.push(newNode);
-		}
-	}
-	inFile.close();
-}
-
-
-
-// create and populate table based on root OR could be lowest item in PQ
-void populateTable()
-{
-	//check access of myTree
-	tree myTree = new tree;
-	for (auto& thisNode : nodes)
-	{
-		myTree.insertNode(thisNode);
-	}
-};
