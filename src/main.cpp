@@ -72,7 +72,7 @@ int main()
 
 	if (option == 1)
 	{
-		openUserFile("./input/20flights.csv");
+		openUserFile("./input/flights.csv");
 		myTree.populateTree(nodes);
 		//change name
 	}
