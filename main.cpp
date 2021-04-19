@@ -13,7 +13,7 @@ using namespace std;
 // each record needs a node
 // need to organize into binary tree
 
-queue<node> nodes; //needs to be made into a binary tree of members node.
+vector<node> nodes; //needs to be made into a binary tree of members node.
 string userSelection;
 
 void openUserFile(string userPick)
@@ -33,27 +33,36 @@ void openUserFile(string userPick)
 			nodes.push(newNode);
 		}
 	}
-	inFile.close();}
+	inFile.close();
+}
 
 
 
 // create and populate table based on root OR could be lowest item in PQ
 void populateTable()
 {
+	//check access of myTree
+	tree myTree = new tree;
+	for (auto& thisNode : nodes)
+	{
+		myTree.insertNode(thisNode);
+	}
 };
 
 int main()
 {
 	cout << "Which file(s) to open?\n";
-	cout << "Would you like to read in data now? 1 for Yes" << endl;
+	//cout << "Would you like to read in data now? 1 for Yes" << endl;
 
 	/*======= Control loop to input data for testing =======*/
 	int option;
 	cin >> option;
 
-	if (option == 1) 
+	if (option == 1)
 	{
 		openUserFile("20flights.csv");
+		populateTable();
+		//change name
 	}
 
 	else
@@ -63,14 +72,14 @@ int main()
 
 	/*======= Create tree =======*/
 	// openUserFile created all the nodes in a queue
-	
+
 
 
 	/*======= Prompt user with choices, get input =======*/
 	cout << "1. Learn more about an airport." << endl;
-	cout << "2. Do other thing" << endl;
+	/*cout << "2. Do other thing" << endl;
 	cout << "3. Do anothing thing" << endl;
-	cout << "4. Do something" << endl;
+	cout << "4. Do something" << endl;*/
 	cout << "0. Exit" << endl;
 
 	int choice;
@@ -84,6 +93,7 @@ int main()
 		string airportCode;
 		cin >> airportCode;
 		node* myNode = tree.getNode(airportCode);
+		cout << "Please see the output for your results. Have a safe flight!" << endl;
 		// do node csv things
 	}
 
@@ -102,7 +112,7 @@ int main()
 	{
 		// do thing
 
-	}	
+	}
 
 	else if (choice == 0)
 	{
@@ -115,7 +125,3 @@ int main()
 	}
 	return 0;
 }
-
-
-
-
