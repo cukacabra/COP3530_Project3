@@ -79,6 +79,7 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
 // writes airline name and score into csv
 void node::writeNode(ofstream& infile) {  
 	// iterates through dataVector
+	infile << "Airline,Score" << "\n";
 	for (auto it = dataVector.begin(); it != dataVector.end(); ++it) {
 		infile << it->airline << "," << it->score << "\n";
 	}
