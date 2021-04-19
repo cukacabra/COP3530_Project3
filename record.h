@@ -19,6 +19,7 @@ private:
 	int month;
 	int day;
 	string day_of_week;
+	string airline;
 	int flight_number;
 	string tail_number;
 	string origin_airport;
@@ -52,5 +53,6 @@ public:
 	record(string lineitem_);
 	void generateRecordScore(); 
 	string airline;
+	int score;
 	float tardyScore; //in this context, bigger score means LESS reliable
 };
