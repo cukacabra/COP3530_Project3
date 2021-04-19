@@ -26,7 +26,7 @@ node::node(record record_)
 
 
 
-node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply run me on a node and it will generate dataProcessed, a unordered map of key:airline name value:pair<number of flights, reliability score (out of 100)>
+void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply run me on a node and it will generate dataProcessed, a unordered map of key:airline name value:pair<number of flights, reliability score (out of 100)>
     //first = flight count for this given airline; second = cumlative tardy score
     for (auto it = dataProcessed.begin(); it != dataProcessed.end(); ++it) {
         it.generateRecordScore();
@@ -74,4 +74,12 @@ node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply run me 
         dataVector[i] = dataVector[max];
         dataVector[max] = temp;
     }
+}
+
+// writes airline name and score into csv
+void node::writeNode(ofstream& infile) {  
+	// iterates through dataVector
+	for (auto it = dataVector.begin(); it != dataVector.end(); ++it) {
+		infile << it->airline << "," << it->score << "\n";
+	}
 }
