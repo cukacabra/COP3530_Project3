@@ -1,7 +1,4 @@
 # A++ Flights
-
-![Graph of Airline Scores](output/scores2.csv.png?raw=true)
-
 This program requires the installation of R and the location of your Rscript.exe directory. (e.g. `C:\"Program Files"\R\R-4.0.5\bin\Rscript.exe`)
 
 If this does not work:
@@ -21,3 +18,5 @@ OR
 ### Dependencies:
 * optparse
 * ggplot2
+
+![Graph of Airline Scores](output/scores2.csv.png?raw=true)
