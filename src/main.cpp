@@ -108,7 +108,15 @@ int main()
 		myfile.open("./output/scores2.csv");
 		myNode->writeNode(myfile);
 		myfile.close();
-		system("C:\Program Files\R\R-4.0.5\bin\Rscript.exe src/plot-scores.r -s output/scores2.csv -o output/");
+
+		string rscript;
+		cin.ignore();
+		cout << "Enter the directory of your Rscript.exe" << endl;
+		getline(cin, rscript);
+
+		string cmd_plot = rscript + " plot-scores.r -s output/scores2.csv -o output";
+		cout << cmd_plot << endl;
+		system(cmd_plot.c_str());
 
 	}
 
