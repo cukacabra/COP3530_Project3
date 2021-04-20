@@ -2,6 +2,10 @@ Dependencies:
 optparse
 ggplot2
 
+
+This program requires the installation of R, and the input of your Rscript.exe directory. (e.g. C:\"Program Files"\R\R-4.0.5\bin\Rscript.exe)
+
+If this does not work:
 1. Execute aplusplus.exe to generate scores2.csv
 2. Open cmd, cd to COP3530_Project (e.g. C:\Users\NAME\Documents\GitHub\COP3530_Project)
 3. Run C:\"Program Files"\R\R-4.0.5\bin\Rscript.exe plot-scores.r -s output/scores2.csv -o output
