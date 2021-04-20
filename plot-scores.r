@@ -21,7 +21,6 @@ suppressPackageStartupMessages({
   library(ggplot2)
 })
 
-# scores <- read.csv('~/proj/COP3530_Project3-test/output/scores2.csv')
 scores <- read.csv(opt$scores)
 
 plot <- ggplot(scores, aes(reorder(Airline, 1 / Score), Score)) +

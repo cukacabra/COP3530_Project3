@@ -12,9 +12,8 @@ using namespace std;
 record::record(string lineItem_)
 {
 	vector<string> lineItemVector;
-	//queue<string> lineItemVector;
 	stringstream ss(lineItem_);
-	//int counter = 1;
+
 	while (ss.good())
 	{
 		string tempString;
@@ -24,8 +23,6 @@ record::record(string lineItem_)
 			tempString = "0";
 		}
 		lineItemVector.push_back(tempString);
-		//cout << counter << " temp string: " << tempString << endl;
-		//counter++;
 	}
 	// we can discuss vector vs queue for the dataset
 	year = stoi(lineItemVector[0]);
@@ -62,105 +59,6 @@ record::record(string lineItem_)
 	weather_delay = stoi(lineItemVector[30]);
 
 	tardyScore = 0;
-
-
-		/*year = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		month = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		day = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		day_of_week = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		airline = lineItemVector.front();
-		lineItemVector.pop();
-
-		flight_number = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		tail_number = lineItemVector.front();
-		lineItemVector.pop();
-
-		origin_airport = lineItemVector.front();
-		lineItemVector.pop();
-
-		destination_airport = lineItemVector.front();
-		lineItemVector.pop();
-
-		scheduled_departure = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		departure_time = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		departure_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		taxi_out = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		wheels_off = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		scheduled_time = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		elapsed_time = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		air_time = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		distance = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		wheels_on = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		taxi_in = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		scheduled_arrival = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		arrival_time = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		arrival_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		diverted = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		cancelled = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		cancellation_reason = lineItemVector.front();
-		lineItemVector.pop();
-
-		air_system_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		security_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		airline_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		late_aircraft_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();
-
-		weather_delay = stoi(lineItemVector.front());
-		lineItemVector.pop();*/
-
-	// 1. as reading in records, check to see if airport node exists.
-	// if not, create
-	// 2. create set of all airport codes as reading in records
-	//create tree nodes and assign records (less efficient method)
 
 }
 

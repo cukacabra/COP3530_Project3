@@ -26,7 +26,6 @@ node* tree::getNode(node* rootNode, string airport)
 bool tree::insertNode(node* rootNode, node* inserted)
 {
     if(rootNode == nullptr){ //Airport inserted
-        //rootNode = inserted;
         this->root = inserted;
         return true;
     }
@@ -54,8 +53,6 @@ bool tree::insertNode(node* rootNode, node* inserted)
 void tree::populateTree(vector<node*> nodes)
 {
     //check access of myTree
-    //myTree tree;
-    //tree.root = nullptr;
     for (auto thisNode : nodes)
     {
         this->insertNode(this->root,thisNode);

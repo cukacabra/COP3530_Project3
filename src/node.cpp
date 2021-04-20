@@ -69,9 +69,6 @@ void node::processRecords() { //DO THIS ONCE AN AIRPORT IS PICKED!!!!! Simply ru
             }
         }
         //should only need to happen once, so I won't go about making a function for it
-        //string tempName = dataVector[i]->airline;
-        //int tempFreq = dataVector[i]->flightNumber;
-        //float tempScore = dataVector[i]->score;
         scorecard temp = dataVector[i];
         dataVector[i] = dataVector[maxLoc];
         dataVector[maxLoc] = temp;

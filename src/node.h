@@ -22,6 +22,5 @@ public:
     node(record);
     void processRecords();
     void writeNode(ofstream& infile);
-    //void selectionsort();
 	// create parent, etc
 };

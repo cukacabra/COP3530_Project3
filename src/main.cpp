@@ -25,19 +25,17 @@ void openUserFile(string userPick)
 	if (inFile.is_open())
 	{
 		cout << "Opened csv: " << endl;
+
 		//read line from file to string line
 		string line;
 		getline(inFile, line);
 
 		while (getline(inFile, line))
 		{
-			//cout << "new line input: " << line << endl; // print ever line to test
-			//node* newNode = node(line);
-			//
 			record newRecord = record(line);
 			bool temp = true;
+
 			// check vector of nodes
-			//std::vector<node>::iterator it; 
 			for (int i = 0; i < nodes.size(); i++)
 			{
 				if (nodes[i]->nodeAirport == newRecord.origin_airport)
@@ -62,7 +60,6 @@ void openUserFile(string userPick)
 int main()
 {
 	tree myTree;
-	// cout << "Which file(s) to open?\n";
 	cout << "Would you like to read in airline data now? 1 for Yes" << endl;
 
 	/*======= Control loop to input data for testing =======*/
