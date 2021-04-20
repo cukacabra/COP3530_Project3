@@ -102,13 +102,14 @@ int main()
 		cin >> airportCode;
 		node* myNode = myTree.getNode(myTree.root, airportCode);
 		myNode->processRecords();
-		cout << "Please see the output for your results. Have a safe flight!" << endl;
-		// do node csv things
+
+		// generates csv file
 		ofstream myfile;
 		myfile.open("./output/scores2.csv");
 		myNode->writeNode(myfile);
 		myfile.close();
-
+		
+		//runs rscript to visualize graph
 		string rscript;
 		cin.ignore();
 		cout << "Enter the directory of your Rscript.exe" << endl;
@@ -117,6 +118,8 @@ int main()
 		string cmd_plot = rscript + " plot-scores.r -s output/scores2.csv -o output";
 		cout << cmd_plot << endl;
 		system(cmd_plot.c_str());
+	
+		cout << "Please see the output for your results. Have a safe flight!" << endl;
 
 	}
 
